@@ -13,10 +13,18 @@ set(UDP_SERVER_SOURCES
     src/server/UDPServer.cpp 
 
 ) 
+set(TCP_SERVER_SOURCES 
+    src/server/TCPServer.cpp 
+
+) 
 
 # Add client source files 
 set(UDP_CLIENT_SOURCES 
     src/client/UDPClient.cpp 
+  
+) 
+set(TCP_CLIENT_SOURCES 
+    src/client/TCPClient.cpp 
   
 ) 
 
@@ -30,10 +38,10 @@ set(UDP_CLIENT_SOURCES
 
 # # Create server executables 
 add_executable(UDPServer ${UDP_SERVER_SOURCES} ) 
-
+add_executable(TCPServer ${TCP_SERVER_SOURCES} ) 
 # # Create client executables
 add_executable(UDPClient ${UDP_CLIENT_SOURCES} ) 
-
+add_executable(TCPClient ${TCP_CLIENT_SOURCES} ) 
 
 
 # Set the output directory for the executables
