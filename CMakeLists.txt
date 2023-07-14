@@ -15,21 +15,10 @@ file(GLOB_RECURSE JsonFiles RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
                                       ${CMAKE_CURRENT_SOURCE_DIR}/resources/*.txt)
 
 
-
-
-# # Create server executables
-# add_executable(UDPServer ${UDP_SERVER_SOURCES} )
-# add_executable(TCPServer ${TCP_SERVER_SOURCES} )
-
-# # Create client executables
-# add_executable(UDPClient ${UDP_CLIENT_SOURCES} )
-# add_executable(TCPClient ${TCP_CLIENT_SOURCES} )
-
 # Add main source file
 set(MAIN_SOURCES
     src/main.cpp
 )
-
 # Create main executable
 add_executable(PacketStructure ${MAIN_SOURCES} ${HFiles} ${CppFiles} ${JsonFiles})
 

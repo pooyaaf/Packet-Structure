@@ -1,5 +1,7 @@
 #include "../include/UDP/UDPServer.h"
 #include "../include/UDP/UDPClient.h"
+#include "../include/TCP/TCPServer.h"
+#include "../include/TCP/TCPClient.h"
 #include <iostream>
 
 using namespace std;
@@ -16,7 +18,20 @@ int main()
 
     if (option == 1)
     {
-        cout << "not yet";
+        std::cout << "Choose an option:" << std::endl;
+        std::cout << "1. TCP Server" << std::endl;
+        std::cout << "2. TCP Client" << std::endl;
+        std::cin >> option2;
+        if (option2 == 1)
+        {
+            TCPServer tcpserver;
+            tcpserver.run();
+        }
+        else if (option2 == 2)
+        {
+            TCPClient tcpclient;
+            tcpclient.run();
+        }
     }
     else if (option == 2)
     {
