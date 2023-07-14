@@ -1,16 +1,16 @@
+#include "../../include/UDP/UDPClient.h"
 #include <iostream>
 #include <cstring>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
-#include <arpa/inet.h> // Include this header
+#include <arpa/inet.h>
 
-using namespace std;
 #define SERVER_IP "127.0.0.1"
 #define PORT 12345
 #define BUFFER_SIZE 1024
 
-int main()
+void UDPClient::run()
 {
     int sockfd;
     struct sockaddr_in serverAddr;
@@ -19,7 +19,7 @@ int main()
     if (sockfd < 0)
     {
         std::cerr << "Error creating socket" << std::endl;
-        return 1;
+        return;
     }
 
     serverAddr.sin_family = AF_INET;
@@ -33,10 +33,8 @@ int main()
     {
         std::cerr << "Error sending data" << std::endl;
         close(sockfd);
-        return 1;
+        return;
     }
 
     close(sockfd);
-
-    return 0;
 }
