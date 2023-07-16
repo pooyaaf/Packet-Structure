@@ -5,6 +5,7 @@
 class UDPClient
 {
 public:
+    void checkHeaderFooter(const char *buffer, int dataSize, int counter);
     void run();
 };
 

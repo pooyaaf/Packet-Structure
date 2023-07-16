@@ -1,18 +1,24 @@
 # Packet-Structure
 
+### Description
+
+Packet-Structure is a project that implements both UDP and TCP client-server communication protocols. The server sends files to the client in a specific format, dividing the data into 300-byte packets, each having a well-defined structure. The client receives these packets, checks for matching headers and footers, and prints the counter if the received packet is valid.
+
 ### Data - Sample Format
-| TITLE     | SIZE  | START | END | SAMPLE                  |
-|-----------|-------|-------|-----|-------------------------|
-| HEADER    | 4     | 0     | 3   | AFDBAA00                |
-| COUNTER   | 4     | 4     | 7   | 00000001                |
-| TIMESTAMP | 8     | 8     | 15  | 00000001                |
-| UID       | 16    | 16    | 31  | 0000000000000001        |
-| PAYLOAD   | 2*128 | 32    | 287 | X (16bit value = 2Byte * 128 data) |
-| RESERVED  | 8     | 288   | 295 | 0x00                    |
-| FOOTER    | 4     | 296   | 299 | FFAADF00                |
 
+Each data packet transmitted from the server to the client follows a predefined format, enabling proper identification and validation. The structure of a data packet is as follows:
 
-``` cpp
+| TITLE     | SIZE   | START | END | SAMPLE                              |
+| --------- | ------ | ----- | --- | ----------------------------------- |
+| HEADER    | 4      | 0     | 3   | AFDBAA00                            |
+| COUNTER   | 4      | 4     | 7   | 00000001                            |
+| TIMESTAMP | 8      | 8     | 15  | 00000001                            |
+| UID       | 16     | 16    | 31  | 0000000000000001                    |
+| PAYLOAD   | 2\*128 | 32    | 287 | X (16bit value = 2Byte \* 128 data) |
+| RESERVED  | 8      | 288   | 295 | 0x00                                |
+| FOOTER    | 4      | 296   | 299 | FFAADF00                            |
+
+```cpp
 void UpdateAndSendData()
 {
 	// Header

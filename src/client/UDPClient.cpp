@@ -16,6 +16,43 @@
 #define SERVER_IP "127.0.0.1"
 const int BUFFER_SIZE = 3000;
 const int PORT = 12345;
+int counter = 1; // Initialize the counter
+
+void UDPClient::checkHeaderFooter(const char *buffer, int dataSize, int counter)
+{
+    std::string strHeader;
+    for (int i = 1; i <= 19; ++i)
+    {
+        strHeader += buffer[i];
+    }
+    std::cout << "\n\nHeader: " << strHeader << std::endl;
+    std::string strFooter;
+    for (int i = 19; i >= 1; --i)
+    {
+        strFooter += buffer[dataSize - i];
+    }
+
+    std::cout << "Footer: " << strFooter << std::endl;
+
+    std::string headerCheck = "0xAF 0xDB 0xAA 0x00";
+    std::string footerCheck = "0xFF 0xAA 0xDF 0x00";
+
+    if (strHeader == headerCheck)
+    {
+        if (strFooter == footerCheck)
+        {
+            std::cout << "Counter: " << counter << std::endl;
+        }
+        else
+        {
+            std::cout << "\n *** Error find in Footer of the packer! Not match *** \n";
+        }
+    }
+    else
+    {
+        std::cout << "\n *** Error find in Header of the packer! Not match *** \n";
+    }
+}
 
 void UDPClient::run()
 {
@@ -65,10 +102,13 @@ void UDPClient::run()
             buffer[bytesReceived] = '\0'; // Null-terminate the received data to print as a string
             std::cout << buffer;
 
+            // Call the checkHeaderFooter function to check the header and footer
+            checkHeaderFooter(buffer, bytesReceived, counter);
+            counter++;
             // Keep track of the total bytes received
             totalBytesReceived += bytesReceived;
 
-            // Check if 300 bytes have been received, then print the separator
+            // Check if 3000 bytes have been received, then print the separator
             if (totalBytesReceived >= BUFFER_SIZE)
             {
                 std::cout << "\n -------------------------------------------- \n";
