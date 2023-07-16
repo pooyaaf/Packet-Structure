@@ -5,8 +5,6 @@
 class UDPClient
 {
 public:
-    std::string convertHexToChar(const std::string &hexString);
-
     void run();
 };
 

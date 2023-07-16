@@ -18,6 +18,8 @@ file(GLOB_RECURSE JsonFiles RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
 # Add main source file
 set(MAIN_SOURCES
     src/main.cpp
+    src/client/UDPClient.cpp
+    src/server/UDPServer.cpp
 )
 # Create main executable
 add_executable(PacketStructure ${MAIN_SOURCES} ${HFiles} ${CppFiles} ${JsonFiles})
