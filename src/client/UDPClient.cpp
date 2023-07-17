@@ -104,7 +104,7 @@ void UDPClient::run()
 
             // Call the checkHeaderFooter function to check the header and footer
             checkHeaderFooter(buffer, bytesReceived, counter);
-            counter++;
+            counter = counter + 2;
             // Keep track of the total bytes received
             totalBytesReceived += bytesReceived;
 
