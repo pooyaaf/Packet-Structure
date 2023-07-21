@@ -45,3 +45,13 @@ void UpdateAndSendData()
 	Client_UpdateData(DataBuffer, CLIENT_DATA_BUFFER_SIZE);
 }
 ```
+
+### Inside Program
+
+Server-side:
+
+![server image](/resources/IMG/Screenshot%20from%202023-07-21%2016-17-41.png)
+
+Client-side:
+![client recives first packet](/resources/IMG/Screenshot%20from%202023-07-21%2016-18-33.png)
+![client finds error ](/resources/IMG/Screenshot%20from%202023-07-21%2016-18-47.png)
