@@ -63,7 +63,7 @@ void UDPServer::run()
     sendto(sockfd, connectionConfirmedMsg, strlen(connectionConfirmedMsg), 0, (struct sockaddr *)&clientAddr, clientLen);
 
     // Open the file to send
-    std::ifstream file("../Packet.txt", std::ios::binary);
+    std::ifstream file("../resources/Packet.txt", std::ios::binary);
     if (!file)
     {
         std::cerr << "Error opening the file." << std::endl;
